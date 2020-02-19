@@ -8,6 +8,10 @@ export type Scalars = {
   Float: number,
 };
 
+export type CreatePostInput = {
+  content: Scalars['String'],
+};
+
 export type CreateUserInput = {
   username: Scalars['String'],
   email: Scalars['String'],
@@ -19,6 +23,9 @@ export type Mutation = {
   createUser?: Maybe<User>,
   updateUser?: Maybe<User>,
   deleteUser?: Maybe<User>,
+  createPost?: Maybe<Post>,
+  updatePost?: Maybe<Post>,
+  deletePost?: Maybe<Post>,
 };
 
 
@@ -28,24 +35,59 @@ export type MutationCreateUserArgs = {
 
 
 export type MutationUpdateUserArgs = {
-  id?: Maybe<Scalars['ID']>,
+  id: Scalars['ID'],
   data?: Maybe<UpdateUserInput>
 };
 
 
 export type MutationDeleteUserArgs = {
-  id?: Maybe<Scalars['ID']>
+  id: Scalars['ID']
+};
+
+
+export type MutationCreatePostArgs = {
+  data?: Maybe<CreatePostInput>
+};
+
+
+export type MutationUpdatePostArgs = {
+  id: Scalars['ID'],
+  data?: Maybe<UpdatePostInput>
+};
+
+
+export type MutationDeletePostArgs = {
+  id: Scalars['ID']
+};
+
+export type Post = {
+   __typename?: 'Post',
+  id: Scalars['ID'],
+  content: Scalars['String'],
+  createdAt: Scalars['String'],
+  updatedAt: Scalars['String'],
 };
 
 export type Query = {
    __typename?: 'Query',
   user?: Maybe<User>,
   users: Array<User>,
+  post?: Maybe<Post>,
+  posts: Array<Post>,
 };
 
 
 export type QueryUserArgs = {
   id: Scalars['ID']
+};
+
+
+export type QueryPostArgs = {
+  id: Scalars['ID']
+};
+
+export type UpdatePostInput = {
+  content: Scalars['String'],
 };
 
 export type UpdateUserInput = {
@@ -60,4 +102,5 @@ export type User = {
   username: Scalars['String'],
   email: Scalars['String'],
   name: Scalars['String'],
+  posts: Array<Post>,
 };
