@@ -27,14 +27,3 @@ input CreatePostInput {
 input UpdatePostInput {
   content: String!
 }
-
-enum MutationType {
-  CREATED
-  UPDATED
-  DELETED
-}
-
-type PostSubscriptionPayload {
-  mutation: MutationType!
-  node: Post
-}

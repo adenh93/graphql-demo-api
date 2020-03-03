@@ -35,24 +35,12 @@ export type MutationDeletePostArgs = {
   id: Scalars['ID']
 };
 
-export enum MutationType {
-  Created = 'CREATED',
-  Updated = 'UPDATED',
-  Deleted = 'DELETED'
-}
-
 export type Post = {
    __typename?: 'Post',
   id: Scalars['ID'],
   content: Scalars['String'],
   createdAt: Scalars['String'],
   updatedAt: Scalars['String'],
-};
-
-export type PostSubscriptionPayload = {
-   __typename?: 'PostSubscriptionPayload',
-  mutation: MutationType,
-  node?: Maybe<Post>,
 };
 
 export type Query = {
