@@ -1,12 +1,3 @@
-type User {
-  id: ID! @id
-  username: String! @unique
-  email: String! @unique
-  name: String!
-  createdAt: DateTime! @createdAt
-  updatedAt: DateTime! @updatedAt
-}
-
 type Post {
   id: ID! @id
   content: String!

@@ -1,25 +1,16 @@
 type Query {
-  user(id: ID!): User
-  users: [User!]!
   post(id: ID!): Post
   posts: [Post!]!
 }
 
 type Mutation {
-  createUser(data: CreateUserInput): User
-  updateUser(id: ID!, data: UpdateUserInput): User
-  deleteUser(id: ID!): User
   createPost(data: CreatePostInput): Post
   updatePost(id: ID!, data: UpdatePostInput): Post
   deletePost(id: ID!): Post
 }
 
-type User {
-  id: ID!
-  username: String!
-  email: String!
-  name: String!
-  posts: [Post!]!
+type Subscription {
+  newPost: Post!
 }
 
 type Post {
@@ -29,22 +20,21 @@ type Post {
   updatedAt: String!
 }
 
-input CreateUserInput {
-  username: String!
-  email: String!
-  name: String!
-}
-
-input UpdateUserInput {
-  username: String
-  email: String
-  name: String
-}
-
 input CreatePostInput {
   content: String!
 }
 
 input UpdatePostInput {
   content: String!
+}
+
+enum MutationType {
+  CREATED
+  UPDATED
+  DELETED
+}
+
+type PostSubscriptionPayload {
+  mutation: MutationType!
+  node: Post
 }
